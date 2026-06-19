@@ -1,173 +1,52 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Xush kelibsiz</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      overflow: hidden;
-    }
-
-    .welcome-bg {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(ellipse at 50% 40%, hsl(270 60% 15%), hsl(240 30% 6%) 70%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .welcome-center {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
-      z-index: 1;
-      text-align: center;
-    }
-
-    .emoji-wrap {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at 40% 35%, hsl(270 80% 30%), hsl(250 60% 15%));
-      box-shadow: 0 0 60px hsl(270 80% 50% / 0.45), 0 0 120px hsl(270 80% 50% / 0.2);
-      animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-    }
-
-    .emoji {
-      font-size: 4rem;
-    }
-
-    .welcome-text-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.75rem;
-      opacity: 0;
-      transform: translateY(40px);
-      animation: fadeUp 0.7s ease-out 1.4s forwards;
-    }
-
-    .welcome-name {
-      font-size: 1.3rem;
-      font-weight: 600;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: hsl(270 80% 75%);
-    }
-
-    .welcome-title {
-      font-size: clamp(2rem, 6vw, 3.5rem);
-      font-weight: 800;
-      background: linear-gradient(135deg, hsl(50 100% 75%), hsl(300 80% 75%), hsl(200 90% 75%));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .welcome-sub {
-      font-size: 1.1rem;
-      color: hsl(220 20% 65%);
-    }
-
-    .particles {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-
-    .particle {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      bottom: 10%;
-      opacity: 0;
-    }
-
-    @keyframes popIn {
-      from { transform: scale(0) rotate(-30deg); opacity: 0; }
-      to   { transform: scale(1) rotate(0deg);  opacity: 1; }
-    }
-
-    @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes rise {
-      0%   { opacity: 0; transform: translateY(0)   scale(0); }
-      30%  { opacity: 1; }
-      100% { opacity: 0; transform: translateY(-200px) scale(0.5); }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="welcome-bg">
-    <div class="welcome-center">
-      <div class="emoji-wrap">
-        <span class="emoji">🌟</span>
-      </div>
-      <div class="welcome-text-wrap">
-        <p class="welcome-name">Charos</p>
-        <h1 class="welcome-title">Saytga xush kelibsiz!</h1>
-        <p class="welcome-sub">Biz sizni kutayotgan edik ✨</p>
-      </div>
+
+    <div class="card">
+    
+        <div class="avatar-container">
+            <div class="avatar-ring"></div>
+        </div>
+
+
+        <h2 class="main-title">Rahmatullayeva Charos</h2>
+
+        <div class="info-list">
+            <div class="info-item">
+           
+                <p><strong>Ism:</strong> Charos</p>
+            </div>
+            <div class="info-item">
+             
+                <p><strong>Familiya:</strong> Rahmatullayeva</p>
+            </div>
+            <div class="info-item">
+              
+                <p><strong>Tug'ilgan sana:</strong> 09.11.2011</p>
+            </div>
+            <div class="info-item">
+            
+                <p><strong>Telefon:</strong> +998 97 789 04 55</p>
+            </div>
+            <div class="info-item align-top">
+            
+                <p><strong>Manzil:</strong> Amudaryo tumani,Jumur ovul mahallasi</p>
+            </div>
+            <div class="info-item block-item">
+                <div class="email-header">
+                   
+                    <strong>Email manzil:</strong>
+                </div>
+                <p class="email-text">rahmatullayevacharos911@gmail.com</p>
+            </div>
+        </div>
     </div>
-    <div class="particles" id="particles"></div>
-  </div>
 
-  <script>
-    const colors = Array.from({ length: 18 }, (_, i) => `hsl(${(i * 27) % 360}, 85%, 65%)`);
-    const container = document.getElementById('particles');
-
-    colors.forEach((color, i) => {
-      const el = document.createElement('div');
-      el.className = 'particle';
-      el.style.left = `${10 + Math.random() * 80}%`;
-      el.style.background = color;
-
-      const duration = 2.2;
-      const delay = 0.3 + i * 0.12;
-      const repeatDelay = 1.8 + Math.random() * 2;
-      const tx = (Math.random() - 0.5) * 160;
-      const ty = -(80 + Math.random() * 120);
-
-      el.style.transform = `translate(${tx}px, 0)`;
-      el.style.animation = `rise ${duration}s ease-out ${delay}s infinite`;
-      el.style.animationDelay = `${delay}s`;
-
-      container.appendChild(el);
-
-      // Custom keyframes per particle for x offset
-      const keyframes = `
-        @keyframes rise-${i} {
-          0%   { opacity: 0; transform: translate(0, 0) scale(0); }
-          30%  { opacity: 1; }
-          100% { opacity: 0; transform: translate(${tx}px, ${ty}px) scale(0.5); }
-        }
-      `;
-      const style = document.createElement('style');
-      style.textContent = keyframes;
-      document.head.appendChild(style);
-
-      el.style.animation = `rise-${i} ${duration}s ease-out ${delay}s infinite`;
-      el.style.animationDelay = `${(delay + (repeatDelay)) }s`;
-      el.style.animation = `rise-${i} ${duration}s ease-out infinite`;
-      el.style.animationDelay = `${delay}s`;
-    });
-  </script>
 </body>
 </html>
